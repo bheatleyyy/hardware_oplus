@@ -16,6 +16,7 @@ type vendor_sysfs_msm_subsys, fs_type, sysfs_type;
 type vendor_proc_engineer, fs_type, proc_type;
 
 # Fingerprint
+type vendor_persist_fingerprint_file, file_type;
 type vendor_proc_fingerprint, fs_type, proc_type;
 
 # Sensors
