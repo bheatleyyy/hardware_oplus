@@ -74,6 +74,7 @@
 /(odm|vendor/odm)/lib64/libmpbase\.so                                             u:object_r:same_process_hal_file:s0
 /(odm|vendor/odm)/lib64/libOGLManager\.so                                         u:object_r:same_process_hal_file:s0
 /(odm|vendor/odm)/lib64/libOPAlgoCamFaceBeautyCap\.so                             u:object_r:same_process_hal_file:s0
+/(odm|vendor/odm)/lib64/libOPLUS_SCPortrait\.so                                   u:object_r:same_process_hal_file:s0
 /(odm|vendor/odm)/lib64/libop-ai-beauty-body-detection\.so                        u:object_r:same_process_hal_file:s0
 /(odm|vendor/odm)/lib64/libormshalclient\.so                                      u:object_r:same_process_hal_file:s0
 /(odm|vendor/odm)/lib64/libosensehalclient\.so                                    u:object_r:same_process_hal_file:s0
