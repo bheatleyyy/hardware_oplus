@@ -82,8 +82,7 @@ int64_t msFromNs(int64_t nanos) {
 }
 
 bool patchOplusPickupSensor(V2_1::SensorInfo& sensor) {
-    if (sensor.typeAsString != "android.sensor.tilt_detector"
-                 || sensor.typeAsString != "oneplus.sensor.op_motion_detect") {
+    if (sensor.typeAsString != "android.sensor.tilt_detector") {
         return true;
     }
 
