@@ -25,10 +25,15 @@ namespace fingerprint {
 namespace V2_3 {
 namespace implementation {
 
+// Power AIDL instance name
+static const std::string kPowerInstance = std::string(IPower::descriptor) + "/default";
+
 BiometricsFingerprint::BiometricsFingerprint()
     : mOplusDisplayFd(open("/dev/oplus_display", O_RDWR)) {
     mOplusBiometricsFingerprint = IOplusBiometricsFingerprint::getService();
     mOplusBiometricsFingerprint->setHalCallback(this);
+    mPowerService = IPower::fromBinder(ndk::SpAIBinder(
+        AServiceManager_getService(kPowerInstance.c_str())));
 }
 
 Return<uint64_t> BiometricsFingerprint::setNotify(
@@ -85,11 +90,13 @@ Return<bool> BiometricsFingerprint::isUdfps(uint32_t sensorID) {
 
 Return<void> BiometricsFingerprint::onFingerDown(uint32_t x, uint32_t y, float minor, float major) {
     setFpPress(1);
+    mPowerService->setMode(Mode::LAUNCH, true);
     return mOplusBiometricsFingerprint->onFingerDown(x, y, minor, major);
 }
 
 Return<void> BiometricsFingerprint::onFingerUp() {
     setFpPress(0);
+    mPowerService->setMode(Mode::LAUNCH, false);
     return mOplusBiometricsFingerprint->onFingerUp();
 }
 
